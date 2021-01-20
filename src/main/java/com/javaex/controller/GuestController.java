@@ -81,7 +81,7 @@ public class GuestController {
 			 return "deleteForm";			 
 		}else {//삭제성공
 			
-			return "rdirecte:/guest/addList";
+			return "redirect:/guest/addList";
 		} 
 		
 	}
