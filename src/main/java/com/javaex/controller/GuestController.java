@@ -62,10 +62,10 @@ public class GuestController {
 		
 	}
 	
-	@RequestMapping(value="/delete", method= {RequestMethod.GET ,RequestMethod.POST})
-	public String delete(@RequestParam("password") String password,
+	@RequestMapping(value="/delet2e", method= {RequestMethod.GET ,RequestMethod.POST})
+	public String delete2(@RequestParam("password") String password,
 						@RequestParam("no") int no) {
-		System.out.println("삭제");
+		System.out.println("삭제2");
 		//System.out.println(guestVo); //no값만 들어감
 		
 		GuestVo guestVo = new GuestVo(no ,password);
@@ -86,7 +86,27 @@ public class GuestController {
 		
 	}
 	
-	
+	@RequestMapping(value="/delete", method= {RequestMethod.GET ,RequestMethod.POST})
+	public String delete(@ModelAttribute GuestVo guestVo) {
+		
+		System.out.println("삭제");
+		System.out.println(guestVo); //no값만 들어감 (password값도 가져와야함)
+		
+		//delete불러오기위한 dao선언
+		GuestDao guestDao = new GuestDao();
+		int count = guestDao.guestDelete(guestVo); //count 0일때 비밀번호 틀림, 1일때 삭제성공
+		System.out.println("count:"+count);
+		
+		if(count == 0) { //삭제실패
+			 System.out.println("비밀번호가 틀립니다.");
+			 //포워드를 유틸에 넣어서 포워드 메소드로 이용하기
+			 return "deleteForm";			 
+		}else {//삭제성공
+			
+			return "redirect:/guest/addList";
+		} 
+		
+	}
 	
 	
 	
