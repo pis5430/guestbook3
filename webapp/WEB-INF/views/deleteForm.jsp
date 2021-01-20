@@ -17,9 +17,7 @@
 		<a href="/gbc">메인으로 돌아가기</a>
 		<%-- hidden--%>
 		<input type="text" name="no" value="${param.no}">
-		<%-- <input type="text" name="pass" value="${param.password}"> 
-		guestvo로 처리하려면 password값 까지 가져와야하는데 비밀번호에는 적합하지 않은것같음 
-		보내지 않아도 가능함 : 해결--%>
+
 		
 		<c:if test="${!empty param.password}">
 			<p>비밀번호가 틀립니다. 다시입력해주세요</p>
