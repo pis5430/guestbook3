@@ -63,12 +63,21 @@ public class GuestController {
 		
 	}
 	
+	//시도해보기
+	@RequestMapping(value="/deform2/{no}", method= {RequestMethod.GET ,RequestMethod.POST})	
+	public String deform2 (@PathVariable("no") int no) {		
+		
+		System.out.println("삭제폼2");	
+		System.out.println(no); //여기로는 넘어오는데 deleteForm에서 param.no값으로 안불러와짐
+		return "deleteForm";	
+		
+	}
 	
 	@RequestMapping(value="/delete2", method= {RequestMethod.GET ,RequestMethod.POST})
 	public String delete2(@RequestParam("password") String password,
 						@RequestParam("no") int no) {
 		System.out.println("삭제2");
-		//System.out.println(guestVo); //no값만 들어감
+		//System.out.println(guestVo);
 		
 		GuestVo guestVo = new GuestVo(no ,password);
 		
@@ -94,7 +103,7 @@ public class GuestController {
 	public String delete(@ModelAttribute GuestVo guestVo) {
 		
 		System.out.println("삭제");
-		System.out.println(guestVo); //no값만 들어감 (password값도 가져와야함)
+		System.out.println(guestVo);
 		
 		//delete불러오기위한 dao선언
 		GuestDao guestDao = new GuestDao();

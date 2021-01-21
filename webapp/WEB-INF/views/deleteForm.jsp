@@ -14,9 +14,9 @@
 		비밀번호 : <input type="text" name="password">
 		<button type="submit">확인</button>
 		<br>
-		<a href="/gbc">메인으로 돌아가기</a>
+		<a href="http://localhost:8088/guestbook3/guest/addList">메인으로 돌아가기</a>
 		<%-- hidden--%>
-		<input type="text" name="no" value="${param.no}">
+		<input type="hidden" name="no" value="${param.no}">
 
 		
 		<c:if test="${!empty param.password}">
